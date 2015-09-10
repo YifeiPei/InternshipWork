@@ -1,0 +1,34 @@
+#wrapper{
+	width: 600px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#stage{
+	background-image: url(stage.jpg);
+	background-repeat: no-repeat;
+	height: 200px;
+	width: 600px;
+}
+.available{
+	background-image: url(openTable.jpg);
+	background-repeat: no-repeat;
+	float: left;
+	height: 200px;
+	width: 200px;
+}
+.full{
+	background-image: url(tableFull.jpg);
+	background-repeat: no-repeat;
+	float: left;
+	height: 200px;
+	width: 200px;
+}
+.clear{
+	clear: both;
+}
+.numSeats{
+	color: #03F;
+	margin: 75px;
+	height: 50px;
+	width: 50px;
+}

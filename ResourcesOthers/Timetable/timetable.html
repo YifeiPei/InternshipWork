@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Timetable</title>
+
+<style type="text/css">
+        body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
+        #report { border-collapse:collapse;}
+        #report h4 { margin:0px; padding:0px;}
+        #report img { float:right;}
+        #report ul { margin:10px 0 10px 40px; padding:0px;}
+        #report th {
+	background:#7CB8E2 url(header_bkg.png) repeat-x scroll center left;
+	color:#fff;
+	padding:7px 15px;
+	text-align:center;
+}
+        #report td { background:#C7DDEE none repeat-x scroll center left; color:#000; padding:7px 15px; }
+        #report tr.odd td { background:#fff url(row_bkg.png) repeat-x scroll center left; cursor:pointer; }
+        #report div.arrow { background:transparent url(arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
+        #report div.up { background-position:0px 0px;}
+    </style>
+<link rel='stylesheet' href='theme.css' />
+<link href='fullcalendar/fullcalendar.css' rel='stylesheet' />
+<link href='fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='jquery/jquery-1.9.1.min.js'></script>
+<script src='jquery/jquery-ui-1.10.2.custom.min.js'></script>
+<script src='fullcalendar/fullcalendar.min.js'></script>
+    <script type="text/javascript">  
+        $(document).ready(function(){
+            $("#report tr:odd").addClass("odd");
+            $("#report tr:not(.odd)").hide();
+            $("#report tr:first-child").show();
+            
+            $("#report tr.odd").click(function(){
+                $(this).next("tr").toggle();
+                $(this).find(".arrow").toggleClass("up");
+            });
+        });
+    </script>
+<script>
+
+	var COMP_SCI_7000 = {
+                        id: 29339,
+			title: "COMP SCI 7000 Software Architecture",
+                        allDay: false,
+			start: "2013-06-06 11:00:00",
+                        end: "2013-06-06 13:00:00",
+                        editable: false 
+                        };
+                        
+            var COMP_SCI_7007 = {
+                        id: 22963,
+			title: "COMP SCI 7007 Specialised Programming",
+                        allDay: false,
+			start: "2013-06-01 11:00:00",
+                        end: "2013-06-01 13:00:00",
+                        editable: false 
+                        };
+                        
+            var COMP_SCI_7015 = {
+                        id: 22961,
+			title: "COMP SCI 7015 Software Engineering and Project",
+                        allDay: false,
+			start: "2013-06-01 11:00:00",
+                        end: "2013-06-01 13:00:00",
+                        editable: false
+                        }; 
+             
+             var COMP_SCI_7031 = {
+                        id: 22944,
+			title: "COMP SCI 7031 Advanced Programming Paradigms",
+                        allDay: false,
+			start: "2013-06-01 11:00:00",
+                        end: "2013-06-01 13:00:00",
+                        editable: false 
+                        };  
+                        
+             var COMP_SCI_7045 = {
+                        id: 29337,
+			title: "COMP SCI 7045 Distributed High Performance Computing",
+                        allDay: false,
+			start: "2013-06-01 11:00:00",
+                        end: "2013-06-01 13:00:00",
+                        editable: false 
+                        };
+             var COMP_SCI_7054 = {
+                        id: 21384,
+			title: "COMP SCI 7054 High Integrity Software Engineering",
+                        allDay: false,
+			start: "2013-06-01 11:00:00",
+                        end: "2013-06-01 13:00:00",
+                        editable: false 
+                        };  
+            var COMP_SCI_7064 = {
+                        id: 22958,
+			title: "COMP SCI 7064 Operating Systems",
+                        allDay: false,
+			start: "2013-06-01 11:00:00",
+                        end: "2013-06-01 13:00:00",
+                        editable: false 
+                        };  
+                        
+             var COMP_SCI_7076 = {
+                        id: 22947,
+			title: "COMP SCI 7076 Distributed Systems",
+                        allDay: false,
+			start: "2013-06-01 11:00:00",
+                        end: "2013-06-01 13:00:00",
+                        editable: false 
+                        };  
+                       
+             var COMP_SCI_7081 = {
+                        id: 22946,
+			title: "COMP SCI 7081 Computer Systems",
+                        allDay: false,
+			start: "2013-06-01 11:00:00",
+                        end: "2013-06-01 13:00:00",
+                        editable: false 
+                        };  
+                        
+              var COMP_SCI_7088 = {
+                        id: 22964,
+			title: "COMP SCI 7088 Systems Programming in C and C++",
+                        allDay: false,
+			start: "2013-06-01 11:00:00",
+                        end: "2013-06-01 13:00:00",
+                        editable: false 
+                        }; 
+
+	$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#calendar').fullCalendar({
+			theme: true,
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			editable: false,
+			
+			weekends: false,
+			allDaySlot: false,
+			minTime: 9,
+			maxTime: 18,
+			events: [
+				{
+					title: 'Specialized Programming',
+					start: new Date(2013, 05, 06),
+					//end: new Date(y, m, 29),
+					//url: 'http://google.com/'
+				},
+				{
+					title: 'Specialized Programming',
+					start: new Date(2013, 05, 08),
+					//end: new Date(y, m, 29),
+					//url: 'http://google.com/'
+				}
+			]
+		});
+		
+	});
+
+</script>    
+<style>
+
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 12px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+
+	#calendar {
+		width: 600px;
+		margin: 0 auto;
+		}
+
+</style>    
+    
+</head>
+
+<body>
+<table align="center" id="report">
+        <tr>
+            <th>Class</th>
+            <th>Subject</th>
+            <th>Component</th>
+          <th>Availability</th>
+            <th>Campus</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>29339</td>
+            <td>COMP SCI 7000 Software Architecture</td>
+            <td>Lecture</td>
+            <td>18</td>
+            <td>NTRCE</td>
+            <td><div class="arrow"></div></td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                
+                <h4>Additional information</h4>
+                <ul>
+                    <li>2013-08-01 - 2013-09-19: Thursday: 11:00 - 13:00: Ingkarni Wardli, B21, Teaching Suite</li>
+                    <li>2013-10-10 - 2013-10-31: Thursday: 11:00 - 13:00: Ingkarni Wardli, B21, Teaching Suite</li>
+                 </ul>
+                <img src="accept-button.png" width="60" height="40" onclick="addClass(COMP_SCI_7007);">
+                <img src="delete-button.png" width="60" height="40" onclick="deleteClass(COMP_SCI_7007);">
+            </td>
+        </tr>
+        <tr>
+            <td>22963</td>
+            <td>COMP SCI 7007 Specialised Programming</td>
+            <td>Lecture</td>
+            <td>23</td>
+            <td>NTRCE</td>
+            <td><div class="arrow"></div></td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                
+              <h4>Additional information</h4>
+                <ul>
+                    <li>2013-07-29 - 2013-09-16: Monday: 15:00 - 17:00: Ingkarni Wardli, B18, Teaching Suite</li>
+                    <li>2013-10-07 - 2013-10-28: Monday: 15:00 - 17:00: Ingkarni Wardli, B18, Teaching Suite</li>
+                 </ul>
+                 <img src="accept-button.png" width="60" height="40" onclick="addClass(COMP_SCI_7007);">
+                 <img src="delete-button.png" width="60" height="40" onclick="deleteClass(COMP_SCI_7007);">
+            </td>
+        </tr>
+        <tr>
+            <td>22961</td>
+            <td>COMP SCI 7015 Software Engineering and Project</td>
+            <td>Lecture</td>
+            <td>5</td>
+            <td>NTRCE</td>
+            <td><div class="arrow"></div></td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                
+              <h4>Additional information</h4>
+                <ul>
+                    <li>2013-07-30 - 2013-09-17: Tuesday: 15:00 - 16:00: Ligertwood, 231, Law Lecture Theatre 1</li>
+                    <li>2013-08-01 - 2013-09-19: Thursday: 15:00 - 16:00: Napier, G04, Lecture Theatre</li>
+                    <li>2013-08-01 - 2013-09-19: Thursday: 16:00 - 17:00: Napier, G04, Lecture Theatre</li>
+                    <li>2013-10-08 - 2013-10-29: Tuesday: 15:00 - 16:00: Ligertwood, 231, Law Lecture Theatre 1</li>
+                    <li>2013-10-10 - 2013-10-31: Thursday: 15:00 - 16:00: Napier, G04, Lecture Theatre</li>
+                    <li>2013-10-10 - 2013-10-31: Thursday: 16:00 - 17:00: Napier, G04, Lecture Theatre</li>
+                 </ul>
+              <img src="accept-button.png" width="60" height="40" onclick="addClass(COMP_SCI_7015);">
+              <img src="delete-button.png" width="60" height="40" onclick="deleteClass(COMP_SCI_7015);">
+            </td>
+        </tr>
+        <tr>
+            <td>22944</td>
+            <td>COMP SCI 7031 Advanced Programming Paradigms</td>
+            <td>Lecture</td>
+            <td>20</td>
+            <td>NTRCE</td>
+            <td><div class="arrow"></div></td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                
+              <h4>Additional information</h4>
+                <ul>
+                    <li>2013-07-30 - 2013-09-17: Tuesday: 16:00 - 18:00: Benham Labs, G10, Benham Lecture Theatre</li>
+                    <li>2013-10-08 - 2013-10-29: Tuesday: 16:00 - 18:00: Benham Labs, G10, Benham Lecture Theatre</li>
+                 </ul>
+              <img src="accept-button.png" width="60" height="40" onclick="addClass(COMP_SCI_7031);">
+              <img src="delete-button.png" width="60" height="40" onclick="deleteClass(COMP_SCI_7031);">
+            </td>
+        </tr>
+        <tr>
+            <td>29337</td>
+            <td>COMP SCI 7045 Distributed High Performance Computing</td>
+            <td>Lecture</td>
+            <td>22</td>
+            <td>NTRCE</td>
+            <td><div class="arrow"></div></td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                
+              <h4>Additional information</h4>
+                <ul>
+                    <li>2013-07-31 - 2013-09-18: Wednesday: 16:00 - 18:00: Ingkarni Wardli, B21, Teaching Suite</li>
+                    <li>2013-10-09 - 2013-10-30: Wednesday: 16:00 - 18:00: Ingkarni Wardli, B21, Teaching Suite</li>
+                 </ul> 
+              <img src="accept-button.png" width="60" height="40" onclick="addClass(COMP_SCI_7045);">
+                <img src="delete-button.png" width="60" height="40" onclick="deleteClass(COMP_SCI_7045);">
+            </td>
+        </tr>
+        <tr>
+            <td>21384</td>
+            <td>COMP SCI 7054 High Integrity Software Engineering</td>
+            <td>Lecture</td>
+            <td>43</td>
+            <td>NTRCE</td>
+            <td><div class="arrow"></div></td>
+        </tr>
+        <tr>
+          <td colspan="6">
+                
+            <h4>Additional information</h4>
+              <ul>
+                  <li>2013-07-29 - 2013-09-16: Monday: 12:00 - 14:00: Ingkarni Wardli, B21, Teaching Suite</li>
+                  <li>2013-09-04: Wednesday: 14:00 - 16:00: Ingkarni Wardli, 218, Collaborative Suite</li>
+                  <li>2013-09-18: Wednesday: 14:00 - 16:00: Ingkarni Wardli, 218, Collaborative Suite</li>
+                  <li>2013-10-07 - 2013-10-28: Monday: 12:00 - 14:00: Ingkarni Wardli, B21, Teaching Suite</li>
+                  <li>2013-10-16: Wednesday: 14:00 - 16:00: Ingkarni Wardli, 218, Collaborative Suite</li>
+               </ul> 
+            <img src="accept-button.png" width="60" height="40" onclick="addClass(COMP_SCI_7054);">
+                <img src="delete-button.png" width="60" height="40" onclick="deleteClass(COMP_SCI_7054);">
+            </td>
+        </tr>
+        <tr>
+            <td>22958</td>
+            <td>COMP SCI 7064 Operating Systems</td>
+            <td>Lecture</td>
+            <td>19</td>
+            <td>NTRCE</td>
+            <td><div class="arrow"></div></td>
+        </tr>
+        <tr>
+          <td colspan="6">
+                
+            <h4>Additional information</h4>
+              <ul>
+                  <li>2013-08-02 - 2013-09-20: Friday: 16:00 - 18:00: Barr Smith South, 3022, Polygon Lecture Theatre</li>
+                  <li>2013-10-11 - 2013-11-01: Friday: 16:00 - 18:00: Barr Smith South, 3022, Polygon Lecture Theatre</li>
+               </ul>
+            <img src="accept-button.png" width="60" height="40" onclick="addClass(COMP_SCI_7064);">
+            <img src="delete-button.png" width="60" height="40" onclick="deleteClass(COMP_SCI_7064);">
+            </td>
+        </tr>
+        <tr>
+            <td>22947</td>
+            <td>COMP SCI 7076 Distributed Systems</td>
+            <td>Lecture</td>
+            <td>19</td>
+            <td>NTRCE</td>
+            <td><div class="arrow"></div></td>
+        </tr>
+        <tr>
+          <td colspan="6">
+                
+            <h4>Additional information</h4>
+              <ul>
+                  <li>2013-07-29 - 2013-09-16: Monday: 09:00 - 11:00: Medical School Sth, SG15, Hone Lecture Theatre</li>
+                  <li>2013-10-07 - 2013-10-28: Monday: 09:00 - 11:00: Medical School Sth, SG15, Hone Lecture Theatre</li>
+               </ul>
+            <img src="accept-button.png" width="60" height="40" onclick="addClass(COMP_SCI_7076);">
+            <img src="delete-button.png" width="60" height="40" onclick="deleteClass(COMP_SCI_7076);">
+            </td>
+        </tr>
+        <tr>
+            <td>22946</td>
+            <td>COMP SCI 7081 Computer Systems</td>
+            <td>Lecture</td>
+            <td>16</td>
+            <td>NTRCE</td>
+            <td><div class="arrow"></div></td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                
+              <h4>Additional information</h4>
+                <ul>
+                    <li>2013-07-30 - 2013-09-17: Tuesday: 09:00 - 10:00: Hughes, 309, Hughes Lecture Theatre</li>
+                    <li>2013-08-01 - 2013-09-19: Thursday: 09:00 - 10:00: Hughes, 309, Hughes Lecture Theatre</li>
+                    <li>2013-10-08 - 2013-10-29: Tuesday: 09:00 - 10:00: Hughes, 309, Hughes Lecture Theatre</li>
+                    <li>2013-10-10 - 2013-10-31: Thursday: 09:00 - 10:00: Hughes, 309, Hughes Lecture Theatre</li>
+                 </ul>
+              <img src="accept-button.png" width="60" height="40" onclick="addClass(COMP_SCI_7081);">
+              <img src="delete-button.png" width="60" height="40" onclick="deleteClass(COMP_SCI_7081);">
+            </td>
+        </tr>
+        <tr>
+            <td>22964</td>
+            <td>COMP SCI 7088 Systems Programming in C and C++</td>
+            <td>Lecture</td>
+            <td>21</td>
+            <td>NTRCE</td>
+            <td><div class="arrow"></div></td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                
+              <h4>Additional information</h4>
+                <ul>
+                    <li>2013-07-30 - 2013-09-17: Tuesday: 13:00 - 14:00: Hughes, 309, Hughes Lecture Theatre</li>
+                    <li>2013-07-31 - 2013-09-18: Wednesday: 14:00 - 15:00: Napier, G04, Lecture Theatre</li>
+                    <li>2013-10-08 - 2013-10-29: Tuesday: 13:00 - 14:00: Hughes, 309, Hughes Lecture Theatre</li>
+                    <li>2013-10-09 - 2013-10-30: Wednesday: 14:00 - 15:00: Napier, G04, Lecture Theatre</li>
+                 </ul>
+              <img src="accept-button.png" width="60" height="40" onclick="addClass(COMP_SCI_7088);">
+              <img src="delete-button.png" width="60" height="40" onclick="deleteClass(COMP_SCI_7088);">
+            </td>
+        </tr>
+    </table>
+	<p><br /></p>
+    <div id='calendar'></div>
+
+</body>
+</html>
